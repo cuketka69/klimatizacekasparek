@@ -3,7 +3,14 @@
 import { useState, type FormEvent } from "react";
 import { company } from "@/lib/content";
 import { Reveal } from "./Reveal";
-import { PhoneIcon, MailIcon, PinIcon, CheckIcon } from "./icons";
+import { PhoneIcon, MailIcon, PinIcon, CheckIcon, ArrowRightIcon } from "./icons";
+
+// Adresa firmy pro mapu a navigaci
+const mapsQuery = encodeURIComponent(`${company.street}, ${company.city}`);
+// Trasa (navigace) na danou adresu
+const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${mapsQuery}`;
+// Vložená mapa – funguje bez API klíče
+const mapEmbedUrl = `https://www.google.com/maps?q=${mapsQuery}&z=14&output=embed`;
 
 // Client-side only — wire up to a real backend/email service (API route,
 // Formspree, Resend, …) before launch.
@@ -68,6 +75,15 @@ export function ContactForm() {
                 <p className="text-[15px] font-semibold text-brand-dark">
                   {company.street}, {company.city}
                 </p>
+                <a
+                  href={directionsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-flex items-center gap-1.5 text-[13px] font-semibold text-brand hover:text-brand-dark transition-colors"
+                >
+                  Zobrazit trasu
+                  <ArrowRightIcon className="h-3.5 w-3.5" />
+                </a>
               </div>
             </div>
           </Reveal>
@@ -155,6 +171,31 @@ export function ContactForm() {
             )}
           </Reveal>
         </div>
+
+        <Reveal className="mt-8 overflow-hidden rounded-2xl shadow-sm ring-1 ring-black/5">
+          <iframe
+            src={mapEmbedUrl}
+            title={`Mapa – ${company.street}, ${company.city}`}
+            className="h-[320px] w-full border-0 sm:h-[380px]"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
+          <div className="flex flex-col items-center justify-between gap-3 bg-white px-5 py-4 sm:flex-row">
+            <p className="flex items-center gap-2 text-[14px] text-foreground/70">
+              <PinIcon className="h-4 w-4 shrink-0 text-brand" />
+              {company.street}, {company.city}
+            </p>
+            <a
+              href={directionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full rounded-lg bg-brand px-5 py-3 text-center text-[14px] font-semibold text-white shadow-sm transition-colors hover:bg-brand-dark sm:w-auto"
+            >
+              Otevřít trasu v Google Maps
+            </a>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
