@@ -61,6 +61,22 @@ export function CloseIcon(props: IconProps) {
   );
 }
 
+export function ChatIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 9.5 9.5 0 0 1-4-.9L3 20l1.4-4.5A8.4 8.4 0 0 1 3.5 11 8.38 8.38 0 0 1 12 2.5a8.38 8.38 0 0 1 9 9Z" />
+    </svg>
+  );
+}
+
+export function SendIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z" />
+    </svg>
+  );
+}
+
 export function WindIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
