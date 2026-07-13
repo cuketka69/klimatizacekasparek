@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { company } from "@/lib/content";
-import { ChatIcon, CloseIcon, SendIcon } from "./icons";
+import { CloseIcon, SendIcon } from "./icons";
 
 type Action = { label: string; href: string };
 type Message = { from: "bot" | "user"; text: string; action?: Action };
@@ -170,8 +170,14 @@ export function LiveChat() {
       >
         {/* Hlavička */}
         <div className="flex items-center gap-3 bg-brand-dark px-4 py-3.5 text-white">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15">
-            <ChatIcon className="h-5 w-5" />
+          <span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full bg-white ring-2 ring-white/20">
+            <Image
+              src="/chat.webp"
+              alt="Asistent Kašpar"
+              fill
+              sizes="36px"
+              className="object-cover object-top"
+            />
           </span>
           <div className="leading-tight">
             <p className="text-[15px] font-semibold">Asistent Kašpar</p>
@@ -187,10 +193,23 @@ export function LiveChat() {
           {messages.map((m, i) => (
             <div
               key={i}
-              className={`flex ${m.from === "user" ? "justify-end" : "justify-start"}`}
+              className={`flex items-end gap-2 ${
+                m.from === "user" ? "justify-end" : "justify-start"
+              }`}
             >
+              {m.from === "bot" && (
+                <span className="relative h-8 w-8 shrink-0 overflow-hidden rounded-full bg-white shadow-sm ring-1 ring-black/5">
+                  <Image
+                    src="/chat.webp"
+                    alt="Asistent Kašpar"
+                    fill
+                    sizes="32px"
+                    className="object-cover object-top"
+                  />
+                </span>
+              )}
               <div
-                className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-[14px] leading-relaxed ${
+                className={`max-w-[80%] rounded-2xl px-3.5 py-2.5 text-[14px] leading-relaxed ${
                   m.from === "user"
                     ? "rounded-br-sm bg-brand text-white"
                     : "rounded-bl-sm bg-white text-foreground/80 shadow-sm"
