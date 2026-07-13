@@ -4,12 +4,6 @@ import { articles } from "@/lib/content";
 import { Reveal } from "./Reveal";
 import { ArrowRightIcon } from "./icons";
 
-const articleImages = [
-  "/realizace/zakava.jpg",
-  "/realizace/milinov.jpg",
-  "/realizace/lochousice.jpg",
-];
-
 export function Articles() {
   return (
     <section className="bg-white py-16">
@@ -31,7 +25,7 @@ export function Articles() {
               <article className="h-full overflow-hidden rounded-xl border border-black/5 shadow-sm hover:shadow-md transition-shadow">
                 <div className="relative h-36 w-full bg-brand-light">
                   <Image
-                    src={articleImages[i]}
+                    src={item.image}
                     alt={item.title}
                     fill
                     sizes="(min-width: 768px) 33vw, 100vw"
@@ -46,8 +40,8 @@ export function Articles() {
                     {item.text}
                   </p>
                   <Link
-                    href="/#kontakt"
-                    className="mt-4 inline-flex items-center gap-1.5 text-[14px] font-semibold text-brand"
+                    href={`/clanky/${item.slug}`}
+                    className="mt-4 inline-flex items-center gap-1.5 text-[14px] font-semibold text-brand hover:gap-2.5 transition-all"
                   >
                     Číst článek
                     <ArrowRightIcon className="h-4 w-4" />
