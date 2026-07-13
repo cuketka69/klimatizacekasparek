@@ -34,34 +34,15 @@ export function Process() {
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="flex flex-col items-center text-center">
-          <div className="relative w-32 sm:w-40 aspect-[2/3] drop-shadow-md">
-            {/* Tělo maskota */}
+          <span className="relative block h-40 w-40 sm:h-48 sm:w-48 origin-bottom animate-[wave_2.8s_ease-in-out_infinite] drop-shadow-md">
             <Image
               src="/chat.webp"
               alt="Kašpárek mává na pozdrav"
               fill
-              sizes="(min-width: 640px) 160px, 128px"
+              sizes="(min-width: 640px) 192px, 160px"
               className="object-contain"
-              priority
             />
-            {/* Vyříznutá paže (stejný obrázek, oříznutý přes clip-path) mává kolem ramene */}
-            <span
-              aria-hidden
-              className="absolute inset-0 animate-[arm-wave_2.4s_ease-in-out_infinite]"
-              style={{
-                transformOrigin: "67% 37%",
-                clipPath: "polygon(63% 33%, 79% 33%, 80% 63%, 62% 63%)",
-              }}
-            >
-              <Image
-                src="/chat.webp"
-                alt=""
-                fill
-                sizes="(min-width: 640px) 160px, 128px"
-                className="object-contain"
-              />
-            </span>
-          </div>
+          </span>
           <h2 className="mt-4 text-2xl sm:text-3xl font-bold text-brand-dark">
             Jednoduchá cesta k levnějšímu vytápění
           </h2>
