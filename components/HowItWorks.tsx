@@ -11,54 +11,60 @@ const steps = [
   { Icon: LeafIcon, icon: "text-emerald-600" },
 ];
 
-// Délka animace čárky (ms) — po ní se začnou objevovat kartičky
-const LINE_DURATION = 700;
+// Výchozí šířka čárky (px) — cca 2 písmenka uprostřed
+const MIN_WIDTH = 32;
+
+const clamp = (v: number, min: number, max: number) =>
+  Math.min(max, Math.max(min, v));
 
 export function HowItWorks() {
   const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
-  const [showCards, setShowCards] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
+    const compute = () => {
+      const el = ref.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // 0 když nadpis právě vjede zdola, 1 když vystoupá do horní třetiny
+      const start = vh * 0.85;
+      const end = vh * 0.35;
+      const p = clamp((start - rect.top) / (start - end), 0, 1);
+      // Čárka se jen roztahuje — při scrollu nahoru zůstává na dosaženém maximu
+      setProgress((prev) => Math.max(prev, p));
+    };
+
+    compute();
+    window.addEventListener("scroll", compute, { passive: true });
+    window.addEventListener("resize", compute);
+    return () => {
+      window.removeEventListener("scroll", compute);
+      window.removeEventListener("resize", compute);
+    };
   }, []);
 
-  // Až se čárka roztáhne, spustíme kartičky
-  useEffect(() => {
-    if (!inView) return;
-    const t = setTimeout(() => setShowCards(true), LINE_DURATION);
-    return () => clearTimeout(t);
-  }, [inView]);
+  // Kartičky se objeví, jakmile je čárka téměř roztažená
+  const showCards = progress > 0.85;
 
   return (
     <section className="bg-brand-dark py-16">
-      <div ref={ref} className="mx-auto max-w-7xl px-6">
-        <h2
-          className={`text-center text-2xl sm:text-3xl font-bold text-white transition-all duration-700 ease-out ${
-            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-          Jak tepelné čerpadlo funguje
-        </h2>
-        <div
-          className="mx-auto mt-2 h-1 rounded-full bg-brand transition-[width] ease-out"
-          style={{
-            width: inView ? "3.5rem" : "0rem",
-            transitionDuration: `${LINE_DURATION}ms`,
-          }}
-        />
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="text-center">
+          <div ref={ref} className="inline-block">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">
+              Jak tepelné čerpadlo funguje
+            </h2>
+            <div
+              className="mt-2 h-1 rounded-full bg-brand"
+              style={{
+                // z MIN_WIDTH px (2 písmenka) až na 100 % šířky textu
+                width: `calc(${MIN_WIDTH}px + (100% - ${MIN_WIDTH}px) * ${progress})`,
+                marginInline: "auto",
+              }}
+            />
+          </div>
+        </div>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {howItWorks.map((item, i) => {

@@ -1,4 +1,5 @@
-import { LeafIcon, PhoneIcon, MailIcon, PinIcon, ClockIcon } from "./icons";
+import Image from "next/image";
+import { PhoneIcon, MailIcon, PinIcon, ClockIcon } from "./icons";
 import { company, nav, serviceAreas } from "@/lib/content";
 
 export function Footer() {
@@ -7,8 +8,14 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white">
-              <LeafIcon className="h-5 w-5" />
+            <span className="relative h-10 w-10 shrink-0">
+              <Image
+                src="/kaspar.webp"
+                alt="Tepelná čerpadla Kašpar"
+                fill
+                sizes="40px"
+                className="object-contain"
+              />
             </span>
             <span className="text-[15px] font-semibold text-white">
               Tepelná čerpadla Kašpar

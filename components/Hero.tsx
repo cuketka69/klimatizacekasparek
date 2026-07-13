@@ -1,6 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
-import { LeafIcon, PlayIcon, StarIcon } from "./icons";
+import {
+  LeafIcon,
+  PlayIcon,
+  StarIcon,
+  ShieldIcon,
+  HouseHeartIcon,
+  WrenchIcon,
+} from "./icons";
+
+// Rychlé ukazatele důvěry pod hero tlačítky
+const heroStats = [
+  { Icon: ShieldIcon, title: "15+", subtitle: "let zkušeností" },
+  { Icon: HouseHeartIcon, title: "300+", subtitle: "realizací" },
+  { Icon: WrenchIcon, title: "Kompletní", subtitle: "servis" },
+];
 
 // Placeholder headshots — replace with real customer photos (with consent) before launch.
 const customerPhotos = [
@@ -29,7 +43,10 @@ function SavingsBadge({ className }: { className?: string }) {
 
 export function Hero() {
   return (
-    <section id="uvod" className="relative overflow-hidden bg-white">
+    <section
+      id="uvod"
+      className="relative flex items-center overflow-hidden bg-white lg:min-h-[calc(100svh-65px)]"
+    >
       {/* Full-bleed image, right half of the viewport, full section height (desktop only) */}
       <div className="absolute inset-y-0 right-0 hidden w-1/2 lg:block">
         <Image
@@ -43,7 +60,7 @@ export function Hero() {
         <SavingsBadge className="absolute top-8 right-8 hidden xl:flex" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 py-12 lg:py-20">
+      <div className="relative mx-auto w-full max-w-7xl px-6 py-12 lg:py-20">
         <div className="grid gap-10 lg:grid-cols-2">
           <div className="lg:pr-8">
             <p className="mb-3 text-[13px] font-semibold tracking-wide text-brand uppercase">
@@ -78,7 +95,24 @@ export function Hero() {
               </Link>
             </div>
 
-            <div className="mt-10 flex flex-wrap items-center gap-5">
+            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+              {heroStats.map(({ Icon, title, subtitle }) => (
+                <div key={subtitle} className="flex items-center gap-3">
+                  <Icon
+                    className="h-11 w-11 text-brand shrink-0"
+                    strokeWidth={1}
+                  />
+                  <div className="leading-tight">
+                    <p className="text-[17px] font-extrabold text-brand-dark">
+                      {title}
+                    </p>
+                    <p className="text-[12px] text-foreground/60">{subtitle}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-20 flex flex-wrap items-center gap-5">
               <div className="flex -space-x-3">
                 {customerPhotos.map((src, i) => (
                   <span
