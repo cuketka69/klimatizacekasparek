@@ -175,17 +175,113 @@ export const trustPoints = [
   "Pomoc s dotacemi Zelená úsporám",
 ];
 
-export const articles = [
+export type Article = {
+  slug: string;
+  title: string;
+  text: string;
+  image: string;
+  intro: string;
+  sections: { heading: string; paragraphs: string[] }[];
+};
+
+export const articles: Article[] = [
   {
+    slug: "jak-vybrat-tepelne-cerpadlo",
     title: "Jak vybrat tepelné čerpadlo",
     text: "Poradíme, podle čeho vybrat správný typ čerpadla pro váš dům a potřeby.",
+    image: "/realizace/zakava.jpg",
+    intro:
+      "Výběr tepelného čerpadla ovlivní vaše náklady na vytápění na mnoho let dopředu. Shrnujeme nejdůležitější body, na které se při rozhodování zaměřit.",
+    sections: [
+      {
+        heading: "Typ tepelného čerpadla",
+        paragraphs: [
+          "Nejrozšířenější je systém vzduch–voda, který získává teplo z venkovního vzduchu. Je cenově dostupný, snadno se instaluje a pro většinu rodinných domů představuje ideální kompromis mezi cenou a výkonem.",
+          "Systémy země–voda a voda–voda dosahují vyšší účinnosti, ale vyžadují vrty nebo zemní kolektory, a tím i vyšší počáteční investici. Vyplatí se u větších objektů nebo tam, kde je k dispozici vhodný pozemek.",
+        ],
+      },
+      {
+        heading: "Topný výkon a velikost domu",
+        paragraphs: [
+          "Čerpadlo je potřeba správně nadimenzovat podle tepelné ztráty domu. Poddimenzovaná jednotka nestíhá vytápět v mrazech, předimenzovaná zbytečně cyklování a opotřebovává se.",
+          "Pro rodinné domy se nejčastěji volí jednotky o výkonu 6–14 kW. Přesný výpočet vám rádi připravíme na míru vašemu domu.",
+        ],
+      },
+      {
+        heading: "Topný faktor (COP / SCOP)",
+        paragraphs: [
+          "Topný faktor udává, kolik tepla čerpadlo vyrobí z jedné jednotky elektrické energie. Čím vyšší hodnota, tím nižší provozní náklady. Sledujte především sezónní topný faktor SCOP, který zohledňuje účinnost během celého roku.",
+        ],
+      },
+      {
+        heading: "Hlučnost a umístění",
+        paragraphs: [
+          "Venkovní jednotka by měla být umístěná tak, aby nerušila vás ani sousedy. Moderní invertorová čerpadla Carrier patří k nejtišším na trhu a jejich umístění vám pomůžeme navrhnout.",
+        ],
+      },
+    ],
   },
   {
+    slug: "naklady-na-provoz",
     title: "Náklady na provoz",
     text: "Přehled nákladů a úspor v praxi – kolik můžete tepelným čerpadlem skutečně ušetřit.",
+    image: "/realizace/milinov.jpg",
+    intro:
+      "Tepelné čerpadlo je dnes nejúspornějším způsobem vytápění rodinného domu. Podívejme se, z čeho se provozní náklady skládají a kolik reálně ušetříte.",
+    sections: [
+      {
+        heading: "Srovnání s plynem a elektřinou",
+        paragraphs: [
+          "Oproti plynovému kotli i přímotopné elektřině dokáže tepelné čerpadlo snížit náklady na vytápění klidně o 50–70 %. Z jedné kilowatthodiny elektřiny vyrobí tři až pět kilowatthodin tepla.",
+          "U typického rodinného domu o ploše 150 m² se roční náklady na vytápění pohybují řádově v jednotkách tisíc korun měsíčně nižší než u plynu.",
+        ],
+      },
+      {
+        heading: "Co ovlivňuje spotřebu",
+        paragraphs: [
+          "Výslednou spotřebu ovlivňuje zateplení domu, teplota topné vody, typ otopné soustavy (podlahové topení je úspornější než radiátory) a nastavení ekvitermní regulace.",
+          "Důležitá je také kvalita instalace a správné nadimenzování – i nejlepší čerpadlo špatně nainstalované ušetří méně, než by mohlo.",
+        ],
+      },
+      {
+        heading: "Návratnost investice",
+        paragraphs: [
+          "Díky nízkým provozním nákladům a dostupným dotacím se investice do tepelného čerpadla obvykle vrátí v řádu jednotek let. Poté už jen šetříte.",
+        ],
+      },
+    ],
   },
   {
+    slug: "dotace-zelena-usporam",
     title: "Dotace Zelená úsporám",
     text: "Aktuální informace o dotacích na tepelná čerpadla a jak o ně požádat.",
+    image: "/realizace/lochousice.jpg",
+    intro:
+      "Na pořízení tepelného čerpadla můžete čerpat státní dotaci z programu Nová zelená úsporám. Ta výrazně sníží počáteční investici.",
+    sections: [
+      {
+        heading: "Co program pokrývá",
+        paragraphs: [
+          "Program Nová zelená úsporám podporuje výměnu neekologických zdrojů vytápění za tepelné čerpadlo. Dotace se vztahuje na pořízení i instalaci a její výše závisí na typu čerpadla.",
+        ],
+      },
+      {
+        heading: "Kdo může žádat",
+        paragraphs: [
+          "O dotaci mohou žádat vlastníci rodinných i bytových domů. Podmínkou je, že se jedná o stávající objekt a že nový zdroj nahrazuje starší, méně ekologické vytápění.",
+        ],
+      },
+      {
+        heading: "Jak požádat a jak vám pomůžeme",
+        paragraphs: [
+          "Žádost se podává elektronicky, obvykle ji lze podat i zpětně po realizaci. Součástí je odborný posudek a doklady o instalaci.",
+          "S celým procesem vám pomůžeme – od návrhu vhodného řešení přes potřebnou dokumentaci až po podání žádosti. Ozvěte se nám a provedeme vás tím krok za krokem.",
+        ],
+      },
+    ],
   },
 ];
+
+export function getArticle(slug: string) {
+  return articles.find((a) => a.slug === slug);
+}
