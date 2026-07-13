@@ -34,12 +34,12 @@ export function Process() {
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="flex flex-col items-center text-center">
-          <span className="relative block h-24 w-24 origin-bottom animate-[wave_2.8s_ease-in-out_infinite] drop-shadow-sm">
+          <span className="relative block h-40 w-40 sm:h-48 sm:w-48 origin-bottom animate-[wave_2.8s_ease-in-out_infinite] drop-shadow-md">
             <Image
               src="/chat.webp"
               alt="Kašpárek mává na pozdrav"
               fill
-              sizes="96px"
+              sizes="(min-width: 640px) 192px, 160px"
               className="object-contain"
             />
           </span>
