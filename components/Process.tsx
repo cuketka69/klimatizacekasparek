@@ -34,15 +34,23 @@ export function Process() {
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="flex flex-col items-center text-center">
-          <span className="relative block h-40 w-40 sm:h-48 sm:w-48 origin-bottom animate-[wave_2.8s_ease-in-out_infinite] drop-shadow-md">
-            <Image
-              src="/chat.webp"
-              alt="Kašpárek mává na pozdrav"
-              fill
-              sizes="(min-width: 640px) 192px, 160px"
-              className="object-contain"
-            />
-          </span>
+          <div className="relative inline-block animate-[float_4s_ease-in-out_infinite]">
+            <span className="relative block h-40 w-40 sm:h-48 sm:w-48 drop-shadow-md">
+              <Image
+                src="/chat.webp"
+                alt="Kašpárek mává na pozdrav"
+                fill
+                sizes="(min-width: 640px) 192px, 160px"
+                className="object-contain"
+              />
+            </span>
+            <span
+              aria-hidden
+              className="pointer-events-none absolute right-0 top-6 origin-bottom animate-[wave_2.2s_ease-in-out_infinite] text-4xl sm:text-5xl"
+            >
+              👋
+            </span>
+          </div>
           <h2 className="mt-4 text-2xl sm:text-3xl font-bold text-brand-dark">
             Jednoduchá cesta k levnějšímu vytápění
           </h2>
