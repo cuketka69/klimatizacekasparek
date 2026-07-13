@@ -118,16 +118,19 @@ export const solutions = [
     title: "Vzduch–voda",
     text: "Nejrozšířenější řešení pro rodinné domy – jednotky Carrier AW o výkonu 6–14 kW, snadná instalace, nízké provozní náklady.",
     href: "/cenova-nabidka",
+    image: "/produkty/vzduch-voda.webp",
   },
   {
     title: "Vzduch–voda RQ",
     text: "Pro větší výkon 17–33 kW – vhodné pro vytápění větších rodinných domů, bytových domů i komerčních objektů.",
     href: "/cenova-nabidka/30-rq",
+    image: "/produkty/vzduch-voda-rq.webp",
   },
   {
     title: "Ohřev vody",
     text: "Tepelné čerpadlo efektivně zajistí i ohřev teplé užitkové vody pro celou domácnost.",
     href: "/cenova-nabidka",
+    image: "/produkty/ohrev-vody.webp",
   },
 ];
 

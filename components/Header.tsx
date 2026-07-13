@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { PhoneIcon } from "./icons";
+import { PhoneIcon, MenuIcon, CloseIcon } from "./icons";
 import { company, nav } from "@/lib/content";
 
 // Sekce na homepage, které sledujeme scroll-spy (odvozeno z hash odkazů v nav)
@@ -16,6 +16,20 @@ export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [activeHash, setActiveHash] = useState<string>("uvod");
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Zavřít mobilní menu při přechodu na jinou stránku
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  // Zamknout scroll stránky, když je otevřené mobilní menu
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   // Header se při scrollu zmenší a přidá výraznější stín
   useEffect(() => {
@@ -112,7 +126,7 @@ export function Header() {
           })}
         </nav>
 
-        <div className="hidden md:flex items-center gap-2 text-[15px] font-medium text-foreground/80 shrink-0">
+        <div className="hidden lg:flex items-center gap-2 text-[15px] font-medium text-foreground/80 shrink-0">
           <PhoneIcon className="h-4 w-4 text-brand" />
           <a
             href={`tel:${company.phoneHref}`}
@@ -124,12 +138,69 @@ export function Header() {
 
         <Link
           href="/#kontakt"
-          className="group relative shrink-0 overflow-hidden rounded-lg bg-brand px-4 py-2.5 text-[14px] font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-lg hover:shadow-brand/30"
+          className="group relative hidden lg:inline-block shrink-0 overflow-hidden rounded-lg bg-brand px-4 py-2.5 text-[14px] font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-dark hover:shadow-lg hover:shadow-brand/30"
         >
           {/* Jemný lesk přejíždějící přes tlačítko při hoveru */}
           <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
           <span className="relative">Nezávazná poptávka</span>
         </Link>
+
+        {/* Hamburger — jen na mobilu a tabletu */}
+        <button
+          type="button"
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label={menuOpen ? "Zavřít menu" : "Otevřít menu"}
+          aria-expanded={menuOpen}
+          className="lg:hidden flex h-10 w-10 items-center justify-center rounded-lg text-brand-dark transition-colors hover:bg-brand-light shrink-0"
+        >
+          {menuOpen ? (
+            <CloseIcon className="h-6 w-6" />
+          ) : (
+            <MenuIcon className="h-6 w-6" />
+          )}
+        </button>
+      </div>
+
+      {/* Mobilní rozbalovací menu */}
+      <div
+        className={`lg:hidden overflow-hidden border-t border-black/5 bg-white transition-[max-height,opacity] duration-300 ease-out ${
+          menuOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <nav className="mx-auto max-w-7xl px-6 py-4 flex flex-col">
+          {nav.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMenuOpen(false)}
+                aria-current={active ? "page" : undefined}
+                className={`border-b border-black/5 py-3 text-[16px] transition-colors ${
+                  active ? "font-semibold text-brand" : "text-foreground/80 hover:text-brand"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+
+          <a
+            href={`tel:${company.phoneHref}`}
+            className="flex items-center gap-2 py-4 text-[16px] font-medium text-brand-dark"
+          >
+            <PhoneIcon className="h-5 w-5 text-brand" />
+            +420 {company.phone}
+          </a>
+
+          <Link
+            href="/#kontakt"
+            onClick={() => setMenuOpen(false)}
+            className="mt-1 rounded-lg bg-brand px-5 py-3.5 text-center text-[15px] font-semibold text-white shadow-sm transition-colors hover:bg-brand-dark"
+          >
+            Nezávazná poptávka
+          </Link>
+        </nav>
       </div>
     </header>
   );

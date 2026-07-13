@@ -1,9 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { solutions } from "@/lib/content";
 import { Reveal } from "./Reveal";
-import { WindIcon, LayersIcon, DropletIcon, ArrowRightIcon } from "./icons";
-
-const icons = [WindIcon, LayersIcon, DropletIcon];
+import { ArrowRightIcon } from "./icons";
 
 export function Solutions() {
   return (
@@ -17,7 +16,6 @@ export function Solutions() {
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {solutions.map((item, i) => {
-            const Icon = icons[i];
             return (
               <Reveal
                 key={item.title}
@@ -25,9 +23,15 @@ export function Solutions() {
                 delay={i * 120}
                 className="h-full"
               >
-                <div className="group h-full rounded-2xl border border-black/5 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                  <div className="flex h-40 items-center justify-center bg-brand-light">
-                    <Icon className="h-16 w-16 text-brand" strokeWidth={1.2} />
+                <div className="group h-full rounded-2xl border border-black/5 overflow-hidden shadow-sm transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-xl">
+                  <div className="relative h-44 overflow-hidden bg-brand-light">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    />
                   </div>
                   <div className="p-6">
                     <h3 className="text-[17px] font-semibold text-brand-dark">

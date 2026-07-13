@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Kalam } from "next/font/google";
 import "./globals.css";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,7 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="cs" className={`${inter.variable} ${kalam.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <ScrollProgress />
+        {children}
+      </body>
     </html>
   );
 }

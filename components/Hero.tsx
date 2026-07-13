@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CountUp } from "./CountUp";
 import {
   LeafIcon,
   PlayIcon,
@@ -57,7 +58,7 @@ export function Hero() {
           sizes="50vw"
           className="object-cover"
         />
-        <SavingsBadge className="absolute top-8 right-8 hidden xl:flex" />
+        <SavingsBadge className="absolute top-8 right-8 hidden xl:flex animate-[float_5s_ease-in-out_infinite]" />
       </div>
 
       <div className="relative mx-auto w-full max-w-7xl px-6 py-12 lg:py-20">
@@ -103,9 +104,10 @@ export function Hero() {
                     strokeWidth={1}
                   />
                   <div className="leading-tight">
-                    <p className="text-[17px] font-extrabold text-brand-dark">
-                      {title}
-                    </p>
+                    <CountUp
+                      value={title}
+                      className="block text-[17px] font-extrabold text-brand-dark"
+                    />
                     <p className="text-[12px] text-foreground/60">{subtitle}</p>
                   </div>
                 </div>
@@ -162,7 +164,7 @@ export function Hero() {
                 className="object-cover"
               />
             </div>
-            <SavingsBadge className="absolute -bottom-6 -left-6 hidden sm:flex" />
+            <SavingsBadge className="absolute -bottom-6 -left-6 hidden sm:flex animate-[float_5s_ease-in-out_infinite]" />
           </div>
         </div>
       </div>

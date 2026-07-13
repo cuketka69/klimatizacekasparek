@@ -12,10 +12,12 @@ import { TrustBadges } from "@/components/TrustBadges";
 import { Articles } from "@/components/Articles";
 import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
+import { HashScroll } from "@/components/HashScroll";
 
 export default function Home() {
   return (
     <>
+      <HashScroll />
       <Header />
       <main className="flex-1">
         <Hero />
