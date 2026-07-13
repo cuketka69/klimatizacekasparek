@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { process, processSubtitle, processBadge } from "@/lib/content";
 import { LeafIcon, MessageIcon, DocumentHomeIcon, WrenchIcon, ShieldCheckIcon } from "./icons";
 
@@ -33,8 +34,14 @@ export function Process() {
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="flex flex-col items-center text-center">
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-light text-brand animate-[float_3.5s_ease-in-out_infinite]">
-            <LeafIcon className="h-5 w-5" />
+          <span className="relative block h-24 w-24 origin-bottom animate-[wave_2.8s_ease-in-out_infinite] drop-shadow-sm">
+            <Image
+              src="/chat.webp"
+              alt="Kašpárek mává na pozdrav"
+              fill
+              sizes="96px"
+              className="object-contain"
+            />
           </span>
           <h2 className="mt-4 text-2xl sm:text-3xl font-bold text-brand-dark">
             Jednoduchá cesta k levnějšímu vytápění

@@ -68,6 +68,24 @@ body {
   }
 }
 
+/* Mávání maskota – nakláněním kolem spodní hrany, s pauzou mezi mávnutími */
+@keyframes wave {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10%,
+  30%,
+  50% {
+    transform: rotate(-9deg);
+  }
+  20%,
+  40% {
+    transform: rotate(11deg);
+  }
+}
+
 /* Jemné „zmáčknutí" při stisknutí libovolného tlačítka nebo odkazu.
    Používá vlastnost `scale` (Tailwind v4 ji animuje samostatně), takže
    nekoliduje s hover efekty typu -translate-y. */
