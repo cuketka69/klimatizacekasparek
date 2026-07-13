@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { company } from "@/lib/content";
 import { ChatIcon, CloseIcon, SendIcon } from "./icons";
 
@@ -135,7 +136,19 @@ export function LiveChat() {
         aria-label={open ? "Zavřít chat" : "Otevřít chat"}
         className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-brand text-white shadow-lg shadow-brand/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-dark"
       >
-        {open ? <CloseIcon className="h-6 w-6" /> : <ChatIcon className="h-6 w-6" />}
+        {open ? (
+          <CloseIcon className="h-6 w-6" />
+        ) : (
+          <span className="absolute inset-0 overflow-hidden rounded-full bg-white">
+            <Image
+              src="/chat.webp"
+              alt="Chat s asistentem"
+              fill
+              sizes="56px"
+              className="object-cover object-top"
+            />
+          </span>
+        )}
         {!open && (
           <span className="absolute -top-0.5 -right-0.5 flex h-3.5 w-3.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
