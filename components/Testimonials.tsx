@@ -1,23 +1,27 @@
+import Image from "next/image";
 import { Reveal } from "./Reveal";
 import { StarIcon } from "./icons";
 
 // Placeholder testimonials — the source site has no published reviews yet.
-// Replace with real customer quotes before launch.
+// Replace with real customer quotes and photos before launch.
 const testimonials = [
   {
     text: "Profesionální přístup od návrhu po montáž. Čerpadlo nám výrazně snížilo náklady a dům máme pořád krásně vyhřátý.",
     name: "J. a P. N.",
     place: "Plzeň",
+    avatar: "/avatars/customer-1.jpg",
   },
   {
     text: "Skvělá komunikace, rychlá instalace a ochotný servis. Doporučujeme všem, kteří chtějí ušetřit.",
     name: "M. S.",
     place: "Rokycany",
+    avatar: "/avatars/customer-4.jpg",
   },
   {
     text: "S tepelným čerpadlem jsme spokojeni. Tichý provoz, nízké náklady a žádné starosti.",
     name: "L. D.",
     place: "Klatovy",
+    avatar: "/avatars/customer-3.jpg",
   },
 ];
 
@@ -49,8 +53,14 @@ export function Testimonials() {
                   {t.text}
                 </p>
                 <div className="mt-5 flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-light text-brand text-[13px] font-semibold">
-                    {t.name.split(" ").map((p) => p[0]).join("")}
+                  <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border-2 border-white shadow-sm">
+                    <Image
+                      src={t.avatar}
+                      alt={t.name}
+                      fill
+                      sizes="40px"
+                      className="object-cover"
+                    />
                   </span>
                   <div>
                     <p className="text-[14px] font-semibold text-brand-dark">{t.name}</p>
