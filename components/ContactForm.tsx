@@ -9,8 +9,8 @@ import { PhoneIcon, MailIcon, PinIcon, CheckIcon, ArrowRightIcon } from "./icons
 const mapsQuery = encodeURIComponent(`${company.street}, ${company.city}`);
 // Trasa (navigace) na danou adresu
 const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${mapsQuery}`;
-// Vložená mapa – funguje bez API klíče
-const mapEmbedUrl = `https://www.google.com/maps?q=${mapsQuery}&z=14&output=embed`;
+// Vložená mapa – funguje bez API klíče. t=k => satelitní snímek
+const mapEmbedUrl = `https://www.google.com/maps?q=${mapsQuery}&z=16&t=k&output=embed`;
 
 // Client-side only — wire up to a real backend/email service (API route,
 // Formspree, Resend, …) before launch.
