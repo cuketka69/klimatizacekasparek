@@ -189,7 +189,7 @@ export const articles: Article[] = [
     slug: "jak-vybrat-tepelne-cerpadlo",
     title: "Jak vybrat tepelné čerpadlo",
     text: "Poradíme, podle čeho vybrat správný typ čerpadla pro váš dům a potřeby.",
-    image: "/realizace/zakava.jpg",
+    image: "/blog/jak-vybrat.webp",
     intro:
       "Výběr tepelného čerpadla ovlivní vaše náklady na vytápění na mnoho let dopředu. Shrnujeme nejdůležitější body, na které se při rozhodování zaměřit.",
     sections: [
