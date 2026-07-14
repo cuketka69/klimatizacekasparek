@@ -14,8 +14,8 @@ export function Costs() {
           <Reveal from="left">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
               <Image
-                src="/realizace/brezany.jpg"
-                alt="Instalace tepelného čerpadla Carrier, Břežany"
+                src="/sluzby/provozcerpadla.webp"
+                alt="Kolik stojí provoz tepelného čerpadla"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
