@@ -30,7 +30,8 @@ export function Articles() {
                     fill
                     sizes="(min-width: 768px) 33vw, 100vw"
                     className={
-                      item.slug === "jak-vybrat-tepelne-cerpadlo"
+                      item.slug === "jak-vybrat-tepelne-cerpadlo" ||
+                      item.slug === "naklady-na-provoz"
                         ? "object-contain"
                         : "object-cover"
                     }
