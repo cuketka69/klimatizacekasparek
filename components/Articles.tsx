@@ -29,7 +29,11 @@ export function Articles() {
                     alt={item.title}
                     fill
                     sizes="(min-width: 768px) 33vw, 100vw"
-                    className="object-cover"
+                    className={
+                      item.slug === "jak-vybrat-tepelne-cerpadlo"
+                        ? "object-contain"
+                        : "object-cover"
+                    }
                   />
                 </div>
                 <div className="p-5">
