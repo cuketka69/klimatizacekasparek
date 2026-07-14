@@ -255,7 +255,7 @@ export const articles: Article[] = [
     slug: "dotace-zelena-usporam",
     title: "Dotace Zelená úsporám",
     text: "Aktuální informace o dotacích na tepelná čerpadla a jak o ně požádat.",
-    image: "/realizace/lochousice.jpg",
+    image: "/blog/dotace-zelena-usporam.webp",
     intro:
       "Na pořízení tepelného čerpadla můžete čerpat státní dotaci z programu Nová zelená úsporám. Ta výrazně sníží počáteční investici.",
     sections: [

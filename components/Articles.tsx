@@ -31,7 +31,8 @@ export function Articles() {
                     sizes="(min-width: 768px) 33vw, 100vw"
                     className={
                       item.slug === "jak-vybrat-tepelne-cerpadlo" ||
-                      item.slug === "naklady-na-provoz"
+                      item.slug === "naklady-na-provoz" ||
+                      item.slug === "dotace-zelena-usporam"
                         ? "object-contain"
                         : "object-cover"
                     }
