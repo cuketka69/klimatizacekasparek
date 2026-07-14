@@ -10,12 +10,12 @@ export function TrustBadges() {
     <section className="bg-brand-light/40 py-14">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="relative mx-auto block h-24 w-24">
+          <span className="relative mx-auto block h-44 w-44">
             <Image
               src="/kascer.webp"
               alt="Maskot Kašpar"
               fill
-              sizes="96px"
+              sizes="176px"
               className="object-contain"
             />
           </span>
