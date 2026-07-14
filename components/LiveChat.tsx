@@ -150,9 +150,11 @@ export function LiveChat() {
           </span>
         )}
         {!open && (
-          <span className="absolute -top-0.5 -right-0.5 flex h-3.5 w-3.5">
+          <span className="absolute -top-1 -right-1 flex h-5 w-5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex h-3.5 w-3.5 rounded-full bg-emerald-400 ring-2 ring-white" />
+            <span className="relative inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-[11px] font-bold text-white ring-2 ring-white">
+              1
+            </span>
           </span>
         )}
       </button>
