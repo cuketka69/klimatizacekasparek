@@ -1,4 +1,5 @@
-import { ShieldIcon, WrenchIcon, CheckIcon, HomeIcon } from "./icons";
+import Image from "next/image";
+import { WrenchIcon, CheckIcon, HomeIcon, ShieldIcon } from "./icons";
 import { trustPoints } from "@/lib/content";
 import { Reveal } from "./Reveal";
 
@@ -9,8 +10,14 @@ export function TrustBadges() {
     <section className="bg-brand-light/40 py-14">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-white text-brand shadow-md">
-            <ShieldIcon className="h-9 w-9" />
+          <span className="relative mx-auto block h-24 w-24">
+            <Image
+              src="/kascer.webp"
+              alt="Maskot Kašpar"
+              fill
+              sizes="96px"
+              className="object-contain"
+            />
           </span>
           <h2 className="mt-5 text-2xl sm:text-3xl font-bold text-brand-dark">
             Kvalitní montáž a spolehlivý provoz
