@@ -225,7 +225,7 @@ export const articles: Article[] = [
     slug: "naklady-na-provoz",
     title: "Náklady na provoz",
     text: "Přehled nákladů a úspor v praxi – kolik můžete tepelným čerpadlem skutečně ušetřit.",
-    image: "/realizace/milinov.jpg",
+    image: "/blog/naklady-na-provoz.webp",
     intro:
       "Tepelné čerpadlo je dnes nejúspornějším způsobem vytápění rodinného domu. Podívejme se, z čeho se provozní náklady skládají a kolik reálně ušetříte.",
     sections: [
