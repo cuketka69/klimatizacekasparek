@@ -154,17 +154,17 @@ export const additionalServices = [
   {
     title: "Topení",
     text: "Návrh a realizace otopné soustavy vhodné pro provoz s tepelným čerpadlem.",
-    image: "/sluzby/topeni.jpg",
+    image: "/sluzby/topeni.webp",
   },
   {
     title: "Zateplení",
     text: "Doporučíme a zajistíme zateplení domu pro maximální účinnost vytápění.",
-    image: "/sluzby/zatepleni.jpg",
+    image: "/sluzby/zatepleni.webp",
   },
   {
     title: "Elektroinstalace",
     text: "Kompletní elektroinstalační práce spojené s instalací tepelného čerpadla.",
-    image: "/sluzby/elektroinstalace.jpg",
+    image: "/sluzby/elektroinstalace.webp",
   },
 ];
 
